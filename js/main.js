@@ -1,16 +1,19 @@
 
 const CALLINGJOKES = "https://icanhazdadjoke.com/";
+let printJoke;
 
-const loadApi = async() =>{
+let loadApi = async() =>{
     try{
-const response = await fetch(CALLINGJOKES, {
+let response = await fetch(CALLINGJOKES, {
     headers: {
         'Accept': "application/json"
     }
     });
-const data = await response.json();
-console.log (data.joke);
-
+const data = await response.json(); 
+printJoke = data.joke;
+console.log (printJoke);
+document.getElementById("writeJoke").innerHTML = printJoke;
+ 
 } catch(error){
     console.log(error);
 }
