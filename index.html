@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TypeScript & Api's</title>
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
@@ -19,8 +22,14 @@
             <div class="joke">
                 <h4 id="writeJoke"></h4>
             </div>
+            <div class="rateButtons">
+                <p>Please, rate this joke...</p>
+                <i class="em em-flushed" id="1" onclick="rate(1)"></i>
+                <i class="em em-grinning" id="2" onclick="rate(2)"></i>
+                <i class="em em-joy" id="3" onclick="rate(3)"></i>
+            </div>
             <div class="buttonNext">
-                <button type="button" onclick="loadApi()">New Joke</button>
+                <button type="button" id="button" onclick="loadApi()">New Joke</button>
             </div>
         </div>
         <div></div>
