@@ -6,15 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TypeScript & Api's</title>
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-
-
     <link rel="stylesheet" href="./css/style.css" />
 </head>
-<body>
+<body onload="loadApiWeather()">
     <main>
-        <div class="meteo">
-            <p>Avui parcialment ennuvolat</p>
-        </div>
+        <div class="meteo" id="meteo"></div>
         <div class="container">
             <div class="title">
                 <p>'World's bad jokes. The very best.'</p>
