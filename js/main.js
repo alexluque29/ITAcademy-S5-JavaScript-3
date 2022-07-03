@@ -3,7 +3,7 @@ const CALLINGJOKES = "https://icanhazdadjoke.com/";
 const CALLINGWEATHER = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/307297?apikey=jDRJs43fxDcQlMD5etovQZTl7GXiJozS";
 const CALLINGCHUCK = "https://api.chucknorris.io/jokes/random"
 let reportJokes = [];
-let printJoke, printWeather, printTemp;
+let printJoke, printIcon, printTemp;
 let date = new Date();
 
 // Llamada a la API Chistes
@@ -39,6 +39,8 @@ function rate(id){
     let dateIso = date.toISOString();
     let newRegister = new Register (joke, score, dateIso);
     reportJokes.push(newRegister);
+    document.getElementById("rateok").style.visibility = "visible";
+    document.getElementById("rateok").innerHTML = `Thanks for rating (<b>${score}</b>)`;
     console.table(reportJokes)
 }
 
@@ -48,10 +50,11 @@ let loadApiWeather = async() =>{
 let response = await fetch(CALLINGWEATHER);
 const data = await response.json();
 let tempF = data.DailyForecasts[0].Temperature.Maximum.Value;
-printWeather = data.DailyForecasts[0].Day.IconPhrase;
+printIcon = data.DailyForecasts[0].Day.Icon;
 printTemp = ((tempF - 32) * 5/9).toFixed(1);
-document.getElementById("meteo").innerHTML = `Barcelona, today's weather: <b>${printWeather}</b> Temp màx: <b>${printTemp} ºC.</b>`;
- 
+let icono =  `<img src="./image/${printIcon}.png">`;
+document.getElementById("icono").innerHTML = icono;
+document.getElementById("temp").innerHTML = `Max ºC: <b>${printTemp} </b>`;
 } catch(error){
     console.log(error);
 }
@@ -71,6 +74,7 @@ document.getElementById("writeJoke").innerHTML = printJoke;
 // Intercambio de funciones al pulsar el botón de nuevo chiste
 let toggle = true;
 function changeFunc(){
+    document.getElementById("rateok").style.visibility = "hidden";
     toggle ? loadApi() : loadChuck();
     toggle = !toggle;
 }
